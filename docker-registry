@@ -1,0 +1,3 @@
+docker 仓库
+vim /etc/docker/daemon.json
+{"registry-mirrors":["https://registry.docker-cn.com"]}
