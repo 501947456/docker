@@ -1,4 +1,12 @@
 #!/bin/bash
 #创建docker 私有仓库
 echo '{"registry-mirrors":["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
+docker pull registry
+[ ! -d /opt/data/registry ] && mkdir -p /opt/data/registry
+docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry
+
+echo -e "ADD_REGISTRY='--add-registry 192.168.174.128:5000'\nINSECURE_REGISTRY='--insecure-registry 192.168.174.128:5000'" >> /etc/sysconfig/docker
+
+docker tag busybox 192.168.112.136:5000/busybox
+docker push 192.168.112.136:5000/busybox
 
