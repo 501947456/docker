@@ -1,3 +1,4 @@
-docker 仓库
-vim /etc/docker/daemon.json
-{"registry-mirrors":["https://registry.docker-cn.com"]}
+#!/bin/bash
+#创建docker 私有仓库
+echo '{"registry-mirrors":["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
+
