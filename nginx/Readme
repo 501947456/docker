@@ -1,1 +1,4 @@
-#
+#需先启动php-fpm
+docker build -t lnmp/nginx:1.0 .
+
+docker run -dit --name web -p 80:80 -v /web:/web --link php:php lnmp/nginx:1.0
