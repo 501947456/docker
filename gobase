@@ -1,0 +1,10 @@
+$ wget https://studygolang.com/dl/golang/go1.13.1.linux-amd64.tar.gz
+
+$ tar -zxvf go1.13.1.linux-amd64.tar.gz
+
+$ mv go/ /usr/local/
+
+vi /etc/profile
+添加环境变量GOROOT和将GOBIN添加到PATH中
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
