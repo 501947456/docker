@@ -8,3 +8,47 @@ vi /etc/profile
 添加环境变量GOROOT和将GOBIN添加到PATH中
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
+
+
+创建项目
+
+$ mkdir go-gin-example && cd go-gin-example
+
+$ go env -w GO111MODULE=on
+
+$ go env -w GOPROXY=https://goproxy.cn,direct
+
+$ go mod init github.com/EDDYCJY/go-gin-example
+go: creating new go.mod: module github.com/EDDYCJY/go-gin-exampl
+
+
+#gin
+$ go get -u github.com/gin-gonic/gin
+
+
+
+#test.go
+package main
+
+import "github.com/gin-gonic/gin"
+
+func main() {
+    r := gin.Default()
+    r.GET("/ping", func(c *gin.Context) {
+        c.JSON(200, gin.H{
+            "message": "pong",
+        })
+    })
+    r.Run() // listen and serve on 0.0.0.0:8080
+}
+
+$ go mod tidy
+
+
+
+
+
+
+
+
+
